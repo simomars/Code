@@ -1,0 +1,140 @@
+
+
+```html
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      width: 300px;
+      height: 40px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 200px;
+      height: 50px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0099ff;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0077cc;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Scholarship Finder</h1>
+    <p>This web site helps students from the Balkans find scholarships for universities in the US.</p>
+    <p>Please sign in or sign up with your email to access the information.</p>
+    <form id="form">
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <button type="submit" id="submit">Sign In / Sign Up</button>
+      <p id="message"></p>
+    </form>
+  </div>
+
+  <script>
+    // Get the form elements
+    var form = document.getElementById("form");
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var submit = document.getElementById("submit");
+    var message = document.getElementById("message");
+
+    // Define a function to validate the email format
+    function validateEmail(email) {
+      var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return regex.test(email);
+    }
+
+    // Define a function to handle the form submission
+    function handleSubmit(event) {
+      // Prevent the default behavior of the form
+      event.preventDefault();
+
+      // Get the email and password values
+      var emailValue = email.value.trim();
+      var passwordValue = password.value.trim();
+
+      // Check if the email and password are not empty
+      if (emailValue && passwordValue) {
+        // Check if the email is valid
+        if (validateEmail(emailValue)) {
+          // Send a request to a fake API endpoint to sign in or sign up the user
+          fetch("https://fake-api.com/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              email: emailValue,
+              password: passwordValue
+            })
+          })
+          .then(function(response) {
+            // Check if the response is successful
+            if (response.ok) {
+              // Parse the response as JSON
+              return response.json();
+            } else {
+              // Throw an error with the status text
+              throw new Error(response.statusText);
+            }
+          })
+          .then(function(data) {
+            // Check if the user is signed in or signed up
+            if (data.signedIn) {
+              // Display a success message
+              message.textContent = "You are signed in. Please share your location to get better results.";
+              message.className = "success";
+              // Redirect the user to another
+
+Source: Conversation with Bing, 12/04/2023
+(1) Scholarships available in the US for international students. https://www.timeshighereducation.com/student/advice/scholarships-available-us-international-students.
+(2) Fulbright Foreign Student Program | Exchange Programs. https://exchanges.state.gov/non-us/program/fulbright-foreign-student-program.
+(3) ⚽ 5 Scholarships in CROATIA for International Students. https://scholarshipstory.com/scholarships-in-croatia/.
+(4) International Scholarships to Study in the US | Top Universities. https://www.topuniversities.com/student-info/scholarship-advice/international-scholarships-study-us.
